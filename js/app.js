@@ -29,14 +29,41 @@ $(function() {
   }, 11000)
     });
 
+  $('.nav-tabs-a').click(function() {                //switch texte en cliquant sur les tabs
+    $(this).tab("show")
+  })
 
+  $("#showModal").click(function() {                   //afficher la modal
+    $('#modal').show()
+  })
 
+  $('#popover').popover();  //afficher la popover
 
+  var progressBar = $('#progressBar');                    //remplir la barre de progression
+  setInterval(function () {
+    var width = parseInt(progressBar[0].style.getPropertyValue('width')) //25%
+    blurp = Math.floor(Math.random()* 10);
+     // 25% => 25
+    //100px
 
+    if (width >= 100) {
+      progressBar.css('width', 0)
+    } else {
+      progressBar.css('width', width + blurp + '%')
+    }
 
-
-
-
+}, 500)
+  var isPlayed = true
+  setInterval(function () {                       // stoper le spinner
+    if (isPlayed) {
+      $('#spinner').css('animation-play-state', 'paused');
+      isPlayed = false;
+    } else {
+      $('#spinner')
+      .css('animation-play-state', 'running');
+      isPlayed = true;
+    }
+  }, 5000);
 
 
 
